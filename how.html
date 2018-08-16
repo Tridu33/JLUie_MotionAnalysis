@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charSet='utf-8' />
+  <title>Hexo documentation - 数据的机器学习应用例子（以python为例）</title>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/4.0.0/normalize.min.css' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300,700' rel='stylesheet' type='text/css'>
+  <link href='/css/docs.css' rel='stylesheet'>
+</head>
+<body>
+  <div class='menu'>
+    <div class='logo'>
+      Documentation
+    </div>
+    <nav class='menu-nav'>
+      
+        <ul class='nav'>
+          <span>介绍</span>
+          <ul class='nav'>
+            
+              <li>
+                <a href='/what-is-it.html'>这是什么?</a>
+              </li>
+            
+              <li>
+                <a href='/how-it-works.html'>我们在忙什么？</a>
+              </li>
+            
+              <li>
+                <a href='/how-it.html'>数据采集，数据库建立，人因分析</a>
+              </li>
+            
+              <li>
+                <a href='/how.html' class='active'>数据的机器学习应用例子（以python为例）</a>
+              </li>
+            
+              <li>
+                <a href='/ho.html'>网站App创建</a>
+              </li>
+            
+              <li>
+                <a href='/installation.html'>资源共享和txt使用实例分享（matlab）</a>
+              </li>
+            
+              <li>
+                <a href='/using.html'>动作视频预览</a>
+              </li>
+            
+          </ul>
+        </ul>
+      
+        <ul class='nav'>
+          <span>项目畅想未来</span>
+          <ul class='nav'>
+            
+              <li>
+                <a href='/fuckable.html'>项目展望</a>
+              </li>
+            
+          </ul>
+        </ul>
+      
+    </nav>
+    <a class='footer' href='https://github.com/nodejh/hexo-documentation'>
+      Project on github
+    </a>
+  </div>
+  <div class='page'>
+    <div class='page-content'>
+      <h1>数据的机器学习应用例子（以python为例）</h1>
+      <p><img src="http://pd8gnaa72.bkt.clouddn.com/18-8-15/DC_%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF.jpg" alt=""></p>
+<p>​                                                                        <strong>项目技术路线图</strong></p>
+<h3 id="数据的机器学习应用例子（python为例）"><a href="#数据的机器学习应用例子（python为例）" class="headerlink" title="数据的机器学习应用例子（python为例）"></a><strong>数据的机器学习应用例子（<em>python</em>为例）</strong></h3><p>下面，我们举个栗子：</p>
+<h4 id="Kinect数据说明"><a href="#Kinect数据说明" class="headerlink" title="Kinect数据说明"></a><strong><em>Kinect</em>数据说明</strong></h4><p>在采集数据系统中，动作的识别部分尤为重要，它直接影响着系统的准确率及实用性。</p>
+<p><strong>骨骼追踪</strong>是<em>Kinect</em>的核心技术，是<em>Kinect for windows</em>中最为重要的API，它提供了<em>Kinect</em>检测到的人的三维坐标点信息及相对位置的变化，最多可以检测到25个骨骼点，数据对象类型以骨骼帧的形式表示，每帧有20个点可以保存在其中，在SDK中每个骨骼点都是用<em>Joint</em>类型来表示，每一帧是由所有的25个骨骼点组成的基于<em>Joint</em>类型的集合。</p>
+<h4 id="人体动作识别算法理论基础"><a href="#人体动作识别算法理论基础" class="headerlink" title="人体动作识别算法理论基础"></a>人体动作识别算法理论基础</h4><p>基于实际测试所得的数据集，可以得到机器学习的训练数据（如左图所示的骨骼空间点坐标），对训练集进行训练，动作识别，匹配，分类。</p>
+<p><img src="https://tse1-mm.cn.bing.net/th?id=OIP.KI8HwvpgUzlD_oO0P5O3ugHaFZ&amp;w=280&amp;h=195&amp;c=7&amp;o=5&amp;dpr=1.375&amp;pid=1.7" alt=""></p>
+<p>下图说明了使用高斯核函数时如何实现在低维线性不可分时，映射到高维后可分的过程：</p>
+<p><img src="http://7xp3us.com1.z0.glb.clouddn.com/xb_gassi.png" alt=""></p>
+<p> 首先，用<em>PCA</em>（主成分分析）对原数据进行预处理，<em>K-means</em>对数据进行聚类。</p>
+<p>由于原始数据线性不可分，希望通过将输入空间内线性不可分的数据映射到一个高维的特征空间内使得数据在特征空间内是可分的，定义这种映射就可以把原问题转化为求解约束最优化问题。</p>
+<p>​     但是由于从输入空间到特征空间的这种映射会使得维度发生爆炸式的增长，因此上述约束问题中内积的运算会非常大以至于无法承受，因此通常构造一个核函数，避免在特征空间内的运算，只需输入空间就可以进行特征空间的内积运算。</p>
+<p>核函数的作用就是:</p>
+<p><strong>隐含着一个从低维空间到高维空间的映射，而这个映射可以把低维空间中线性不可分的两类点变成线性可分的。</strong> </p>
+<p>​      为构造核函数，我们首先要确定输入空间到特征空间的映射，但是要想求出输入空间到映射空间的映射，需要明确输入空间内数据的分布情况，但大多数情况下，我们并不知道处理数据的具体分布，一般很难构造出完全符合输入空间的核函数。因此目前常用如下几种常用的核函数来代替自己构造核函数：线性核函数，多项式核函数，高斯核函数，<em>sigmoid</em>核函数等。</p>
+<p>经过综合比较和试验，发现高斯核函数更适合本研究的数据，能够更好地识别动作模型并且加以区分。</p>
+<p>高斯核函数的表达式为： </p>
+<p>下图说明了使用高斯核函数时如何实现在低维线性不可分时，映射到高维后可分的过程：</p>
+<p>   <img src="http://pd8gnaa72.bkt.clouddn.com/%E9%AB%98%E6%96%AF%E6%A0%B8%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0%E5%8C%BA%E5%88%86.png" alt=""></p>
+<p>​                                    高斯核函数实现区分</p>
+<h4 id="结合实例说明"><a href="#结合实例说明" class="headerlink" title="结合实例说明"></a>结合实例说明</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">graph LR</div><div class="line">	A(数据集) --&gt; B[&quot;PCA预处理:#9829;&quot;]</div><div class="line">    B[&quot;PCA预处理:#9829;&quot;] --&gt; C&#123;K-means聚类&#125; </div><div class="line">    C&#123;K-means聚类&#125; ==&gt; D[线性不可分函数映射到高维空间]</div><div class="line">    D[线性不可分函数映射到高维空间]-- 就是说 --&gt; id&gt;训练识别]</div><div class="line">    下文分析过程的流程图</div></pre></td></tr></table></figure>
+<p>根据上述原理，取一组实测的动作进行试验，选用坐下和站立的数据，我们尝试利用机器学习中的<em>SVM</em>方法识别两者的区别，进行动作识别。</p>
+<p><img src="http://pd8gnaa72.bkt.clouddn.com/%E9%AA%A8%E9%AA%BC%E5%9D%90%E6%A0%87%E6%98%BE%E7%A4%BA%E7%95%8C%E9%9D%A2%E4%B9%8B%E7%AB%99%E7%AB%8B.jpg" alt=""></p>
+<p>​                                                     <strong>骨骼坐标显示界面之站立</strong></p>
+<p><img src="http://pd8gnaa72.bkt.clouddn.com/%E9%AA%A8%E9%AA%BC%E5%9D%90%E6%A0%87%E6%98%BE%E7%A4%BA%E7%95%8C%E9%9D%A2%E4%B9%8B%E5%9D%90.jpg" alt=""></p>
+<p>​                                                      <strong>骨骼坐标显示界面之坐</strong></p>
+<p>我们知道SVM线性分类器处理线性可分的情况，而对于非线性的情况，SVM 的处理方法是选择一个核函数，通过将数据映射到高维空间，来解决在原始空间中线性不可分的问题。此外，因为训练样例一般是不会独立出现的，它们总是以成对样例的内积形式出现，用对偶形式表示学习器，在该表示中可调参数的个数不依赖输入属性的个数，通过使用恰当的核函数来替代内积，可以隐式地将非线性的训练数据映射到高维空间，而不增加可调参数的个数，前提是核函数能够计算对应着两个输入特征向量的内积。  </p>
+<p>在线性不可分的情况下，支持向量机（SVM）首先在低维空间中完成计算，然后通过核函数将输入空间映射到高维特征空间，最终在高维特征空间中构造出最优分离超平面，从而把平面上本身不好分的非线性数据分开。</p>
+<p>在使用核函数之前，如果用原始的方法，用线性学习器学习一个非线性关系，需要选择一个非线性特征集，并且将数据写成新的表达形式，这等价于应用一个固定的非线性映射，将数据映射到特征空间，在特征空间中使用线性学习器，因此考虑的假设集是如下这种类型的函数：</p>
+<p>这里  $\phi:X \rightarrow F$   是从输入空间到某个特征空间的映射，这意味着建立非线性学习器分为两步：</p>
+<p>1）使用一个非线性映射将数据变换到一个特征空间  $F$ ；</p>
+<p>2）在特征空间使用线性学习器分类。</p>
+<p>由于对偶形式就是线性学习器的一个重要性质，这意味着假设可以表达为训练点的线性组合，因此决策规则可以用测试点和训练点的内积表示为：</p>
+<p>通过引入核函数，我们把原来的分类函数：</p>
+<p>映射成：</p>
+<p>得到非线性数据后，寻找一个映射 ，把原来的数据映射到新空间中，做线性支持向量机（SVM）。</p>
+<p>映射产生的维度增加的数目是呈爆炸性增长的，这给计算带来了非常大的困难，而且一旦遇到无穷维的情况，根本无从计算。所以就需要应用Kernel核函数。</p>
+<p>本研究的SVM 里需要计算的地方数据向量总是以内积的形式出现的，所以核函数能简化映射空间中的内积运算，通过核函数直接在原来的低维空间中进行计算即可，不需要显式地写出映射后的结果。如此避开了直接在高维空间中进行计算，而结果却是等价的。</p>
+<p>利用上述原理对数据进行处理，得到混淆矩阵：</p>
+<p><img src="http://pd8gnaa72.bkt.clouddn.com/%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5.JPG" alt=""></p>
+<p>注：表中a,b为预测值和真实值匹配的数据；b,c为预测值和真实值不匹配的数据。</p>
+<p>我们常用的核函数有：线性核函数，多项式核函数，高斯核函数，sigmoid核函数等。</p>
+<p>比较各种核函数的可靠性，结果见下表：</p>
+<p>​          <img src="http://pd8gnaa72.bkt.clouddn.com/%E5%87%A0%E7%A7%8D%E6%A0%B8%E5%87%BD%E6%95%B0%E5%AF%B9%E6%AF%94.JPG" alt="">                             </p>
+<p>​                                                                      几种常见核函数的对比</p>
+<p>由以上对比我们不难发现，高斯函数在此问题上具有优势，所以我们采用高斯核函数来对动作进行分类，支持向量机（SVM）结果如下图：</p>
+<p>   <img src="http://pd8gnaa72.bkt.clouddn.com/%E9%AB%98%E6%96%AF%E6%A0%B8%E5%87%BD%E6%95%B0SVM%E7%BB%93%E6%9E%9C%E5%9B%BE.JPG" alt=""> </p>
+<p>####　<strong>总结</strong> </p>
+<p>支持向量机（<em>SVM</em>）方法是建立在统计学习理论的<em>VC</em>维理论（<em>VC</em>维是对函数类的一种度量，可以简单的理解为问题的复杂程度，<em>VC</em>维越高，一个问题就越复杂。正是因为<em>SVM</em>关注的是<em>VC</em>维，所以<em>SVM</em>解决问题的时候和样本的维数是无关的）和结构风险最小原理基础上的，根据有限的样本信息在模型的复杂性（即对特定训练样本的学习精度）和学习能力（即无错误地识别任意样本的能力）之间寻求最佳折衷，以期获得最好的推广能力，在动作识别领域多用此方法。<em>SVM</em>的训练结果实际就是找到一个超平面，将不同的样本分开。</p>
+<p>​                                                  <img src="http://upload-images.jianshu.io/upload_images/685204-6717f5df47eaa2c6?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>​                                                                     <em>SVM</em>训练表示</p>
+<p>目前本团队<em>SVM</em>算法的<em>python</em>代码已经实现。我们使用多分类<em>SVM</em>方法对提取的骨架特征进行训练，得到可以对不同动作进行分类的分类器。以收集到的人体运动图片作为测试数据库进行试验，根据混淆矩阵得出，该算法的分类准确率达到<em>97.36%</em>，能够很好地对人体动作进行分类。</p>
+
+    </div>
+  </div>
+  <div class='switch-page'>
+    
+      <a class='previous' href='/how-it.html'>Previous</a>
+    
+    
+      <a class='next' href='/ho.html'>Next</a>
+    
+  </div>
+</body>
+</html>

@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charSet='utf-8' />
-  <title>JLUie_MotionAnalysis - How it works?</title>
+  <title>Hexo documentation - 我们在忙什么？</title>
   <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/4.0.0/normalize.min.css' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300,700' rel='stylesheet' type='text/css'>
-  <link href='/JLUie_MotionAnalysis/css/docs.css' rel='stylesheet'>
+  <link href='/css/docs.css' rel='stylesheet'>
 </head>
 <body>
   <div class='menu'>
@@ -15,53 +15,123 @@
     <nav class='menu-nav'>
       
         <ul class='nav'>
-          <span>Introduction</span>
+          <span>介绍</span>
           <ul class='nav'>
             
               <li>
-                <a href='/JLUie_MotionAnalysis/what-is-it.html'>What is it?</a>
+                <a href='/what-is-it.html'>这是什么?</a>
               </li>
             
               <li>
-                <a href='/JLUie_MotionAnalysis/how-it-works.html' class='active'>How it works</a>
+                <a href='/how-it-works.html' class='active'>我们在忙什么？</a>
+              </li>
+            
+              <li>
+                <a href='/how-it.html'>数据采集，数据库建立，人因分析</a>
+              </li>
+            
+              <li>
+                <a href='/how.html'>数据的机器学习应用例子（以python为例）</a>
+              </li>
+            
+              <li>
+                <a href='/ho.html'>网站App创建</a>
+              </li>
+            
+              <li>
+                <a href='/installation.html'>资源共享和txt使用实例分享（matlab）</a>
+              </li>
+            
+              <li>
+                <a href='/using.html'>动作视频预览</a>
               </li>
             
           </ul>
         </ul>
       
         <ul class='nav'>
-          <span>Usage</span>
+          <span>项目畅想未来</span>
           <ul class='nav'>
             
               <li>
-                <a href='/JLUie_MotionAnalysis/installation.html'>Installation</a>
-              </li>
-            
-              <li>
-                <a href='/JLUie_MotionAnalysis/using.html'>Using It</a>
+                <a href='/fuckable.html'>项目展望</a>
               </li>
             
           </ul>
         </ul>
       
     </nav>
-    <a class='footer' href='https://github.com/Tridu33/JLUie_MotionAnalysis'>
+    <a class='footer' href='https://github.com/nodejh/hexo-documentation'>
       Project on github
     </a>
   </div>
   <div class='page'>
     <div class='page-content'>
-      <h1>How it works?</h1>
-      <p>This is our how it works markdown file</p>
+      <h1>我们在忙什么？</h1>
+      <h2 id="现有相关研究"><a href="#现有相关研究" class="headerlink" title="现有相关研究"></a><strong>现有相关研究</strong></h2><p>目前普遍的人体动作识别模型可以分为两类：基于镜头和基于传感器识别。基于镜头的识别是通过计算机对镜头采集到图像信号进行辨别、解析和计算，来理解人体的动作和行为。</p>
+<p>一般分为三个步骤：</p>
+<blockquote>
+<p>首先从图像信号中提取底层动作特征，然后对动作建立模型，最后利用模式识别，选出具体的动作类别.</p>
+</blockquote>
+<p>其中因为镜头受很多种因素影响，如强度、颜色以及形状等，经常发生变化，而且成因非常复杂。在提取基本特征用于建模时，由于镜头变化，经常会发生漏检现象。同时，因为这些特征非常容易受到噪声等因素的干扰，所以错检也经常发生。最近几年，计算机技术取得了飞速的进步，有关传感器的研究也越来越多，这些都为基于传感器的动作识别提供了有利条件，成为互联网的一项重要应用。</p>
+<p>基于传感器的动作识别一般也分为三个步骤：</p>
+<ul>
+<li>先根据动作数据库训练动作分类器，</li>
+<li>然后从传感器中获取运动的速度，加速度，偏转角等信息，</li>
+<li>最后将获取的这些信息利用分类器进行分类。</li>
+</ul>
+<h3 id="基于机器学习技术的人体动作识别方法"><a href="#基于机器学习技术的人体动作识别方法" class="headerlink" title="基于机器学习技术的人体动作识别方法"></a><strong>基于机器学习技术的人体动作识别方法</strong></h3><p>基于机器学习技术的人体动作识别要解决的主要问题是通过计算机对传感器（摄像机）采集的原始图像或图像序列数据进行处理和分析，学习并理解其中人的动作和行为。一般在运动检测、特征提取的基础之上，通过分析获得人体运动模式，建立视频内容和动作类型描述之间的映射关系，以使计算机能够“看”视频或“理解”视频。</p>
+<p>基于机器学习技术的人体动作识别主要包含一下3个步骤：</p>
+<blockquote>
+<ul>
+<li>从图像帧中检测运动信息并提取底层特征；</li>
+<li>对行为模式或是动作进行建模；</li>
+<li>建立底层视觉特征与动作行为类别等高层语义信息直接的对应关系。</li>
+</ul>
+</blockquote>
+<p>早在20世纪70年代末期，Marr提出计算机视觉理论，将整个视觉感知过程划分为底层、中层、高层3个层次，希望使计算机完全自动地以一种自底向上的方式从二维图像序列中恢复三维结构信息。人体动作分析属于其中的高层视觉部分，近年来越来越多的大学、研究所、商业机构投入到该领域的研究中。国际上的一些计算机视觉方向的权威期刊（如TPAMI、IJCV、TIP）和重要的学术会议（如CVPR、ICCV）也将人体动作分析与识别作为主题内容之一。</p>
+<p><img src="https://tse1-mm.cn.bing.net/th?id=OIP.4t8IopzKAcvmDlHLDRG8oAHaFj&amp;w=281&amp;h=211&amp;c=7&amp;o=5&amp;dpr=1.375&amp;pid=1.7" alt="">                                                  </p>
+<p>​                                    神经网络</p>
+<p>目前，常用的基于机器学习技术的人体动作识别方法包括：</p>
+<p>（1）基于模板的方法、基于概率统计的方法以及基于语法的方法。</p>
+<p>（2）模板匹配的方法直观、简单，但是缺乏鲁棒性，一般用于静态姿势或是简单动作的识别中；</p>
+<p>（3）概率统计的方法是目前主流的方法，应用广泛，存在的问题是需要大量的训练数据来学习模型参数，且对于产生式模型，为了模型求解的便利，一般假设样本是独立同分布的，并假设不同的观测值之间是相互独立的，这样强的独立性假设，往往和数据的实际产生过程不符；</p>
+<p>（4）基于语法的方法有利于对复杂结构的理解和对先验知识的有效利用，一般可与前两种方法结合。对上述几种识别方法的比较，见表：</p>
+<p><img src="http://pd8gnaa72.bkt.clouddn.com/%E5%87%A0%E7%A7%8D%E4%BA%BA%E4%BD%93%E8%AF%86%E5%88%AB%E6%96%B9%E6%B3%95%E6%AF%94%E8%BE%83.JPG" alt="">                              </p>
+<p>人体动作识别方法比较</p>
+<p>基于机器学习技术的人体动作识别的处理方法大体可分为3类：非参数方法、立方体分析方法以及参数化时间序列的方法。</p>
+<p>非参数方法通常从视频的每一帧中提取某些特征，然后用这些特征与预先存储的模板（template）进行匹配；立方体分析方法不是基于帧的处理，而是将整段视频数据看作是一个三维的时空立方体进行分析；而参数化时间序列分析的方法对运动的动态过程给出一个特定的模型，并通过对训练样本数据的学习获得每一类动作特定的模型参数，其中比较常用的模型包括：隐马尔可夫模型（Hidden Markov Models，HMMS）、线性动态系统等。</p>
+<p>近年来，人体动作识别的研究任务也在逐步地发展，对计算机视觉领域提出了一些新的挑战。从早期受限条件下简单动作的识别逐步转向了对真实自然场景下复杂动作的识别；从对单人动作识别的研究自然地过渡到对交互动作甚至是大规模群体性动作识别的研究。</p>
+<h3 id="动作识别领域常用的公共数据库"><a href="#动作识别领域常用的公共数据库" class="headerlink" title="动作识别领域常用的公共数据库"></a><strong>动作识别领域常用的公共数据库</strong></h3><p>目前国际标准化组织还没有成立对虚拟现实技术标准进行研究和制定的专门机构。主要的标准局限于国际虚拟现实技术协会制定的建模语言VRML等方面，另外可以借鉴和参考的就是关于多媒体技术、计算机技术等方面的标准。虚拟现实的一些方面如触觉、感知等技术还不具备制定通用标准的基础和条件。国内虚拟现实技术的应用才刚开始，目前还没有开展相应的标准化工作。</p>
+<p>国外的一些动作识别领域常用的公共数据库，大致分为以下四类：</p>
+<blockquote>
+<p>第一类是KTH和Weizmann等通用动作识别数据库，它们包含表演者在受限场景执行的一系列简单动作，如：“行走”或是“招手”等。</p>
+<p>第二类是一些针对真实环境，比如机场等，面向特定应用的数据库，PETS数据中定义的“偷行李”、“打斗”等面向监控应用的动作是该类的典型范例。</p>
+<p>第三类是一些从新近产生的大量的电影或是个人视频中收集的数据，比如，HOHA、YouTube、WebVideo数据库等，它们的共同的特点是摄像机、场景不固定且同类动作的类内散度比较大，因而极具挑战性。</p>
+<p>第四类是包含多类别动作的数据集，比如UCF50或是UCF101。据我们所知，UCF101是目前最大的动作数据集，包含101个动作类别，约13000个视频片段。</p>
+</blockquote>
+<p>国外的数据库种类繁多，但是国内却没有属于我们自己的标准动作数据库。由于国外人体数据与我国不同，故而急需国人制定属于自己的原创标准动作数据库。</p>
+<h4 id="研究思路和方法"><a href="#研究思路和方法" class="headerlink" title="研究思路和方法"></a><strong>研究思路和方法</strong></h4><p>机器学习是专门研究计算机怎样模拟或实现人类的学习行为，以获取新的知识或技能。而计算机学习过程需要大量的数据做基础，要进行我国人的机器学习研究，必须要有我国人体质的标准动作库。因此我们首先建立一个详尽的、符合国人体质的数据库。基于所建的数据库，我们会进行虚拟现实、虚拟装配、人因分析、动作分析、动作识别等机器学习相关领域的基础试验。</p>
+<h2 id="项目实施计划"><a href="#项目实施计划" class="headerlink" title="项目实施计划"></a><strong>项目实施计划</strong></h2><p>在项目实施的过程中，对项目成员进行细致分工，充分的发挥各个成员的特长以更好的完成一系列工作；项目必需的设备要经过正规渠道购买；遇到难题通过查阅相关文献及资料、上网以及请教老师等途径解决；可以向学校申请借用学校的与实验相关的实验室。</p>
+<p>​    我们小组准备先查阅文献，在中国知网、吉大图书馆、谷歌、维基百科等网站上查阅了</p>
+<p>大量国内外文献资料，确定研究方向，制定方案概要设计。</p>
+<p>对各种已有动作数据库进行调查，并且对各种数据库的优缺点进行分析，并研究机器学习的动作识别方法，确定了方案详细设计，初步成型任务预期方案。</p>
+<h3 id="具体技术路线"><a href="#具体技术路线" class="headerlink" title="具体技术路线"></a><strong>具体技术路线</strong></h3><p><img src="http://pd8gnaa72.bkt.clouddn.com/18-8-15/DC_%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF.jpg" alt=""></p>
+<p>我们大创项目“基于机器学习的标准动作分析方法”项目，具体的技术路线。</p>
+<h4 id="项目特色"><a href="#项目特色" class="headerlink" title="项目特色"></a><strong>项目特色</strong></h4><p>本项目涵盖领域广，涉及机械、工业工程、计算机等多个专业，综合性强，能够开拓思维方式，锻炼与不同专业合作的能力。基于目前的热点问题——机器学习，构建了一种标准动作分析的方法。成果可促进国内人机工程标准化的发展，提高人因工效学的分析效率，对动作识别算法的研究起到了至关重要的作业，具有非常重要的应用价值和实际意义。</p>
+<h4 id="项目创新点"><a href="#项目创新点" class="headerlink" title="项目创新点"></a><strong>项目创新点</strong></h4><ul>
+<li>建立符合国人标准的基础动作特征库，数据高兼容性格式支持，具备hash散列与B+树结合的index索引下标准数据仓储技术，数据挖掘技术。</li>
+<li>基于机器学习训练数据集的有效算法，进行人体动作识别方法研究。对动作进行识别，匹配与分类加工处理。</li>
+</ul>
 
     </div>
   </div>
   <div class='switch-page'>
     
-      <a class='previous' href='/JLUie_MotionAnalysis/index.html'>Previous</a>
+      <a class='previous' href='/index.html'>Previous</a>
     
     
-      <a class='next' href='/JLUie_MotionAnalysis/installation.html'>Next</a>
+      <a class='next' href='/how-it.html'>Next</a>
     
   </div>
 </body>

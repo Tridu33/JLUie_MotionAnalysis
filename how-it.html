@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charSet='utf-8' />
+  <title>Hexo documentation - 数据采集，数据库建立，人因分析</title>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/4.0.0/normalize.min.css' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300,700' rel='stylesheet' type='text/css'>
+  <link href='/css/docs.css' rel='stylesheet'>
+</head>
+<body>
+  <div class='menu'>
+    <div class='logo'>
+      Documentation
+    </div>
+    <nav class='menu-nav'>
+      
+        <ul class='nav'>
+          <span>介绍</span>
+          <ul class='nav'>
+            
+              <li>
+                <a href='/what-is-it.html'>这是什么?</a>
+              </li>
+            
+              <li>
+                <a href='/how-it-works.html'>我们在忙什么？</a>
+              </li>
+            
+              <li>
+                <a href='/how-it.html' class='active'>数据采集，数据库建立，人因分析</a>
+              </li>
+            
+              <li>
+                <a href='/how.html'>数据的机器学习应用例子（以python为例）</a>
+              </li>
+            
+              <li>
+                <a href='/ho.html'>网站App创建</a>
+              </li>
+            
+              <li>
+                <a href='/installation.html'>资源共享和txt使用实例分享（matlab）</a>
+              </li>
+            
+              <li>
+                <a href='/using.html'>动作视频预览</a>
+              </li>
+            
+          </ul>
+        </ul>
+      
+        <ul class='nav'>
+          <span>项目畅想未来</span>
+          <ul class='nav'>
+            
+              <li>
+                <a href='/fuckable.html'>项目展望</a>
+              </li>
+            
+          </ul>
+        </ul>
+      
+    </nav>
+    <a class='footer' href='https://github.com/nodejh/hexo-documentation'>
+      Project on github
+    </a>
+  </div>
+  <div class='page'>
+    <div class='page-content'>
+      <h1>数据采集，数据库建立，人因分析</h1>
+      <p><img src="http://pd8gnaa72.bkt.clouddn.com/18-8-15/DC_%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF.jpg" alt=""></p>
+<p>​                                                                        <strong>项目技术路线图</strong></p>
+<hr>
+<h3 id="前期准备基础"><a href="#前期准备基础" class="headerlink" title="前期准备基础"></a><strong>前期准备基础</strong></h3><p>本项目相关的研究工作积累和已取得的研究工作成绩如下：</p>
+<p>1).李晓雯，刘鹏，唐茂淳，邝伟杜，孙皓，魏超虎，基于体感技术的实时动作检测软件，2018-04-16，计算机软件著作权，流水号：2018R11L363974. (申请)</p>
+<p>2).李晓雯，刘鹏，邝伟杜，魏超虎，唐茂淳，孙皓，一种工作姿势分析系统测算方法，2018-01-19，中国发明专利，申请号：201810051149.0.（申请）</p>
+<p>3).邝伟杜，刘鹏，李晓雯，唐茂淳，魏超虎，孙皓，一种基于虚拟环境的运动训练评价方法，2018-01-23，中国发明专利，申请号：201810062199.9.（申请）</p>
+<h3 id="基础动作特征库的数据采集和建立"><a href="#基础动作特征库的数据采集和建立" class="headerlink" title="基础动作特征库的数据采集和建立"></a>基础动作特征库的数据采集和建立</h3><h3 id="数据采集工具Kinect介绍"><a href="#数据采集工具Kinect介绍" class="headerlink" title="数据采集工具Kinect介绍"></a>数据采集工具Kinect介绍</h3><p><strong><em>Kinect</em></strong>是一种3D体感摄影机，支持实时动态动作捕捉，语音辨识，图像便是等多种功能，由微软公司发布，图1和图2分别为KinectV1.0和KinectV2.0产品。作为X-BOX体感游戏周边支持，基于光编码（<code>light coding</code>）技术。传统的光源采用结构光，投影出去形成一个二维图像编码，而<code>light coding</code>利用的是连续不间断的光源，它的光源打出去形成一个三维体编码。这种光源叫做<strong>激光散斑</strong>。这些光斑能够依据到光远距离的不同而实时变换形状。由于距离光源的位置各不相同，因此可知封闭空间中没有完全相同的光斑形状。只要将整个密闭空间都做上记号，根据物体在空间中的光斑投影，就可以推测物体在空间中的相对位置。 </p>
+<p><img src="http://pumpingstationone.org/wp-content/uploads/2013/05/kinect_1.png" alt=""></p>
+<p>本研究利用KinectV2传感器采集人体21个骨骼点的数据。系统整体结构框架如图： </p>
+<p><img src="http://pd8gnaa72.bkt.clouddn.com/kinect%E6%A1%86%E6%9E%B6.png" alt=""></p>
+<p>设备与电脑保持连接之后，就可以提取有效范围内的数据，提取数据之前，先要开启Kinect，Kinect对准用户之后，再采集用户的数据。此数据作为用户的骨骼模拟和评价依据，显示在主界面上。提取出的数据可以保存在数据库中。如果无法提取数据，提示没有数据或USB未连接。</p>
+<p>下图是需要采集骨骼数据的流程图。</p>
+<p><img src="http://pd8gnaa72.bkt.clouddn.com/image/png/.jpg%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E6%B5%81%E7%A8%8B%E5%9B%BE.JPG" alt=""></p>
+<p>在采集数据系统中，动作的识别部分尤为重要，它直接影响着系统的准确率及实用性。</p>
+<p><strong>骨骼追踪</strong>是Kinect的核心技术，是Kinect for windows中最为重要的API，它提供了Kinect检测到的人的三维坐标点信息及相对位置的变化，最多可以检测到25个骨骼点，数据对象类型以骨骼帧的形式表示，每帧有20个点可以保存在其中，在SDK中每个骨骼点都是用Joint类型来表示，每一帧是由所有的25个骨骼点组成的基于Joint类型的集合。Joint类型包含有3个属性：</p>
+<p>1).<em>JointType</em>:骨骼点的类型，属于枚举类型，包含有20个骨骼点的名称。</p>
+<p>2).<em>SkeletonPoint</em>类型表示骨骼点的位置信息。<em>SkeletonPoint</em>是一个结构体，里面存储骨骼点的三维坐标信息Ｘ、Ｙ、Ｚ。</p>
+<p>3).<em>TrackingState：TrackingState</em>类型也是枚举类型，用来表示骨骼点的追踪状态，一共有三种状态。</p>
+<p>其中，Tracked表示的是可以正确追踪到此骨骼点，<em>NotTracked</em>表示没有追踪到骨骼点，<em>Inferred</em>则表示该骨骼点的追踪状态无法确定。</p>
+<h3 id="数据库分类和建立"><a href="#数据库分类和建立" class="headerlink" title="数据库分类和建立"></a><strong>数据库分类和建立</strong></h3><p>我们把人体动作分为五类，分别为normal、p2e、p2p、sports、statistic， 即人的日常动作、体育活动、双人交互式动作、人在不同环境下的交互动作。并将每类动作及其对应的子动作录入库中,录入MySQL:</p>
+<p><img src="http://pd8gnaa72.bkt.clouddn.com/%E5%8A%A8%E4%BD%9C%E6%B1%87%E6%80%BB.png" alt=""></p>
+<p><a href="https://github.com/Tridu33/JLUie_MotionAnalysis/installation.html" target="_blank" rel="noopener">动作数据库txt等资源下载传送门</a></p>
+<h3 id="基础动作特征库"><a href="#基础动作特征库" class="headerlink" title="基础动作特征库"></a><strong>基础动作特征库</strong></h3><p>测量建立出符合国人标准的标准动作库。</p>
+<p>当前几乎所有动作研究数据库均以欧美体质为工作对象，但国人体质与欧美人种相差较大，我们力求建立了一个符合国人标准的详尽的标准动作库，这是国内进行机器学习研究的必要条件。基于多结构化程序模块的设计，本研究所建立的基础动作特征库支持多种格式，<code>kinect</code>，<code>matlab</code>等相关硬件软件均可调取其中的数据进行人因功效学评价、机器学习等相关领域研究，适用面广泛。</p>
+<ul>
+<li>（1）基础动作特征库应用系统设计思路和实施流程：</li>
+</ul>
+<p><img src="http://pd8gnaa72.bkt.clouddn.com/%E5%9F%BA%E7%A1%80%E5%8A%A8%E4%BD%9C%E7%89%B9%E5%BE%81%E5%BA%93%E9%A1%B6%E5%B1%82DFD%E5%9B%BE.jpg" alt=""></p>
+<p>在进行一系列的需求分析之后，进行基础动作特征库的系统设计（包括概念设计、逻辑设计和物理设计）。在需求分析阶段采用DFD需求建模方法，得到相关数据、功能、性能需求。</p>
+<p><img src="http://pd8gnaa72.bkt.clouddn.com/%E5%9F%BA%E7%A1%80%E5%8A%A8%E4%BD%9C%E7%89%B9%E5%BE%81%E5%BA%93%E7%AC%AC%E4%B8%80%E5%B1%82DFD%E5%9B%BE.jpg" alt=""></p>
+<p>采用实体—联系模型方法(E-R方法)建立概念模型，按3NF范式标准转换为相应的数据模型与关系模式，在已有硬件基础之上搭建物理结构。</p>
+<p>在基础动作特征库性能方面，采用模式化优化设计，例如：适量增加冗余列、分割表、新增汇总表等；</p>
+<p>在基础动作特征库存储方面，建立物化(索引)视图或聚集索引等；</p>
+<p>在数据查询方面，针对不同数据查询需求，建立B+树索引、Hash散列索引，满足范围查询、等值查询需求，提高信息匹配度。</p>
+<ul>
+<li>（2）主要功能：动作数据分类、动作数据相关参数及文件的存储、数据挖掘与大数据分析等。</li>
+<li>（3）建立目标：基本实现主要功能，为基于机器学习的动作分析算法研究提供底层数据，为人因工效学评价建立数据基础。</li>
+<li>（4）动作分类的依据：我们把人体动作分为五类，分别为normal、p2e、p2p、sports、statistic，即人的日常动作、体育活动、双人交互式动作、人在不同环境下的交互动作，并将每类动作及其对应的子动作录入到基础动作特征库中。</li>
+<li>（5）数据库面向的对象：从事机器学习算法开发工作人员、从事大数据分析工作者、从事人因工效学评价研究者。</li>
+<li>（6）<strong>建立数据库的意义</strong>：采集并存储了大量置信度较高的底层动作数据，包括相关动态坐标值、人体骨骼模型仿真图样、以及相关可编译程序代码等，为机器学习算法的开发与应用提供数据保障，提供了一种新型的动作分析方法的研究思路。</li>
+</ul>
+<h3 id="关于标准动作分析的IE特色学科结合发展"><a href="#关于标准动作分析的IE特色学科结合发展" class="headerlink" title="关于标准动作分析的IE特色学科结合发展"></a><strong>关于标准动作分析的IE特色学科结合发展</strong></h3><p>本文研究的数据源需要<em>Kinect v2</em>摄像机能够获取到人体动作姿势骨骼点像，通过<em>Kinect SDK 2.0</em>所提供的应用程序编程接口可获得人体21个骨骼关节点的三维坐标。我们已采集了13个人体动作，每个动作又根据Kinect距地面的高度<em>（1m、1.5m）</em>、实验者距<em>Kinect</em>的角度<em>（0°、-45°、+45°）</em>、实验者<em>（A、B）</em>再分类，共48组数据。购买了虚拟主机，搭建了网页和数据库存入。<strong>团队在<em>2018年4月16日</em>申请了计算机软件著作权，(基于体感技术的实时动作检测软件<em>（2018R11L363974）)</em></strong></p>
+<p><img src="http://pd8gnaa72.bkt.clouddn.com/%E8%BD%AF%E4%BB%B6%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B.png" alt=""></p>
+<p><em>Kinect</em>设备与电脑保持连接之后，就可以提取有效范围内的数据，提取数据之前，先要开启<em>Kinect，Kinect</em>对准用户之后，再采集用户的数据。此数据作为用户的骨骼模拟和评价依据，显示在主界面上。提取出的数据可以保存在数据库中。如果无法提取数据，提示没有数据或USB未连接。</p>
+<p>动作评价方法采用了<code>rula</code>评判和模特法。</p>
+<p><img src="http://pd8gnaa72.bkt.clouddn.com/kinect%E6%98%BE%E7%A4%BA%E7%95%8C%E9%9D%A2%E6%AD%A3%E5%B8%B8%E8%A1%8C%E5%8A%A8%E8%B5%B0.jpg" alt=""></p>
+<p>上图为当<em><code>Kinect V2</code></em>放置高度距地面<em>1m</em>时，用户动作方向与<em>Kinect</em>设备正方向夹角为<em>45°</em>时正常行走的骨骼点坐标数据显示界面，计算机将自动将数据带入上文的方法进行计算。</p>
+<p><img src="http://pd8gnaa72.bkt.clouddn.com/%E5%8A%A8%E4%BD%9C%E5%88%86%E6%9E%90%E7%95%8C%E9%9D%A2.png" alt=""></p>
+<p>根据需要可自动求出用户此动作的模特值，替代传统的人工计时方法。还可对动作进行<em>rula</em>评判，每一个评价动作均有范围，电脑对动作数据进行评价，最后通过矩阵换算，计算可得最终评价，自动反馈出动作级别，有效减少IE工程师的工作量。</p>
+<p> 当用户需要对某一动作进行评价时，只需在数据库中提取对应的动作数据进行人因评价，如体力劳动强度、动作复杂性、持续时间、速度、精度要求等。</p>
+
+    </div>
+  </div>
+  <div class='switch-page'>
+    
+      <a class='previous' href='/how-it-works.html'>Previous</a>
+    
+    
+      <a class='next' href='/how.html'>Next</a>
+    
+  </div>
+</body>
+</html>
