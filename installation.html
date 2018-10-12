@@ -2,6 +2,8 @@
 <html>
 <head>
   <meta charSet='utf-8' />
+   <!-- 注释http转换https-->
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <title>JLUie_MotionAnalysis - 资源共享和使用实例分享</title>
   <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/4.0.0/normalize.min.css' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300,700' rel='stylesheet' type='text/css'>
@@ -95,7 +97,7 @@
 <p>然后，我们把每一帧播放，形成<code>*.avi</code>视频：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">%%制作动画，写成视频并且学习读写</span></div><div class="line">clear;clc;close;</div><div class="line">load <span class="string">'Debugshoushi.txt'</span>;</div><div class="line">D=Debugshoushi;</div><div class="line">[m,n]=<span class="built_in">size</span>(D);</div><div class="line">M=moviein(<span class="number">162</span>);</div><div class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:<span class="number">162</span></div><div class="line">save <span class="built_in">i</span>.mat <span class="built_in">i</span>;</div><div class="line"><span class="comment">%单帧图像是吗？</span></div><div class="line">   draw_human;</div><div class="line">    M(:,<span class="built_in">i</span>)=getframe;</div><div class="line"><span class="comment">%实现旋转视图,动态观看 ,取消注释就能看</span></div><div class="line"><span class="comment">% t = 0:1:360;  </span></div><div class="line"><span class="comment">% for j =1:1:length(t)  </span></div><div class="line"><span class="comment">%     view(-180-t(j),-90);  </span></div><div class="line"><span class="comment">%     pause(0.01)  </span></div><div class="line"><span class="comment">% end  </span></div><div class="line"><span class="comment">% pause(0.217);</span></div><div class="line">cla</div><div class="line"><span class="keyword">end</span></div><div class="line">myVideo = VideoWriter(<span class="string">'收势.avi'</span>);</div><div class="line">open(myVideo);</div><div class="line">writeVideo(myVideo, M);</div><div class="line">close(myVideo);<span class="comment">%动画N同理</span></div><div class="line">close all;</div></pre></td></tr></table></figure>
 <p><strong>效果（24式太极拳）</strong></p>
-<iframe height="498" width="510" src="http://player.youku.com/embed/XMzc3NDYxMDU2NA==" frameborder="0" 'allowfullscreen'=""></iframe>
+<iframe height="498" width="510" src="//player.youku.com/embed/XMzc3NDYxMDU2NA==" frameborder="0" 'allowfullscreen'=""></iframe>
 
 <p>好了，现在你应该已经学会会用我们的数据库的txt文件了！</p>
 <p>我们的数据中不但有静态骨骼点的<strong>空间信息</strong>，还有动态的<strong>时间信息</strong>（<em>Kinect</em>采样频率<em>30HZ</em>）！</p>
